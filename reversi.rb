@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'debug'
 
 require_relative './lib/reversi_methods'
 
@@ -15,8 +14,8 @@ class Reversi
 
   def run
     loop do
-  
       output(@board)
+
       if finished?(@board)
         binding.break
         puts '試合終了'
@@ -32,7 +31,6 @@ class Reversi
       end
 
       print "command? (#{@current_stone == WHITE_STONE ? '白○' : '黒●'}) > "
-      binding.break
       command = gets.chomp
       break if QUIT_COMMANDS.include?(command)
 
@@ -52,6 +50,7 @@ class Reversi
   end
 
   private
+
   def toggle_stone
     @current_stone = @current_stone == WHITE_STONE ? BLACK_STONE : WHITE_STONE
   end
